@@ -7,7 +7,7 @@ using personalsiteapi.Models;
 
 namespace personalsiteapi.Controllers
 {
-    [Route("schools")]
+    [Route("api/schools")]
     [ApiController]
     public class SchoolController : ControllerBase
     {

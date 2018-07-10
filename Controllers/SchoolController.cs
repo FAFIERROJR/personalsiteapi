@@ -37,5 +37,16 @@ namespace personalsiteapi.Controllers
 
             return CreatedAtRoute("GetSchool", new {id = school.Id}, school);
         }
+
+        [HttpDelete("{id}", Name="DeleteSchool")]
+        public ActionResult<School> deleteById(long id){
+            var school = _context.Schools.Find(id);
+            if(school == null){
+                return NotFound();
+            }
+
+            _context.Schools.Remove(school);
+            return school;
+        }
     }
 }

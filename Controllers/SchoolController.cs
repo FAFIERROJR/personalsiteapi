@@ -31,7 +31,7 @@ namespace personalsiteapi.Controllers
         }
 
         [HttpPost]
-        public IActionResult addHero(School school){
+        public IActionResult addSchool(School school){
             _context.Schools.Add(school);
             _context.SaveChanges();
 

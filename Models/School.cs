@@ -3,7 +3,7 @@ namespace personalsiteapi.Models{
         public long Id {get; set;}
          public string Name {get; set;}
         public string ImgUrl {get; set;}
-        public double gpa{get; set;}
+        public double Gpa{get; set;}
         public string StartYear {get; set;}
         public string EndYear {get; set;}
 

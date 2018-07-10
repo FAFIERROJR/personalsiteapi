@@ -21,9 +21,9 @@ namespace personalsiteapi.Controllers
         public ActionResult<List<School>> getAll(){
             return _context.Schools.ToList();
         }
-        [HttpGet("{id}", Name="GetSchool")]
-        public ActionResult<School> getById(long id){
-            var school = _context.Schools.Find(id);
+        [HttpGet("{key}", Name="GetSchool")]
+        public ActionResult<School> getByKey(string key){
+            var school = _context.Schools.Find(key);
             if(school == null){
                 return NotFound();
             }
@@ -35,12 +35,12 @@ namespace personalsiteapi.Controllers
             _context.Schools.Add(school);
             _context.SaveChanges();
 
-            return CreatedAtRoute("GetSchool", new {id = school.Id}, school);
+            return CreatedAtRoute("GetSchool", new {key = school.Key}, school);
         }
 
-        [HttpDelete("{id}", Name="DeleteSchool")]
-        public ActionResult<School> deleteById(long id){
-            var school = _context.Schools.Find(id);
+        [HttpDelete("{key}", Name="DeleteSchool")]
+        public ActionResult<School> deleteByKey(string key){
+            var school = _context.Schools.Find(key);
             if(school == null){
                 return NotFound();
             }

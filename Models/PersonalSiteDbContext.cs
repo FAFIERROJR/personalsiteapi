@@ -7,6 +7,12 @@ namespace personalsiteapi.Models{
             :base(options){
             }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder){
+            modelBuilder.Entity<School>()
+                .HasAlternateKey(s => s.Name)
+                .HasName("AlternateKey_Name");
+        }
+
             public DbSet<School> Schools {get; set;}
     }
 }

@@ -48,6 +48,8 @@ namespace personalsiteapi
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
             });
 
+            app.UseCors(builder =>
+                builder.WithOrigins("https://franciscofierro.us"));
             app.UseHttpsRedirection();
             app.UseMvc();
         }

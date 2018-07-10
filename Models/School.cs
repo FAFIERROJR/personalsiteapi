@@ -1,10 +1,13 @@
 namespace personalsiteapi.Models{
     public class School{
         public long Id {get; set;}
+        public string ImgUrl {get; set;}
         public string Name {get; set;}
-        public string StartYear;
-        public string EndYear;
-        public string[] Honors;
+        public string StartYear {get; set;}
+
+        public string EndYear {get; set;}
+
+        public string[] Honors {get; set;}
 
         // public virtual ICollection<Courses> NotableCourses;
 

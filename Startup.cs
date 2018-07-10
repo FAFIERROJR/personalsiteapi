@@ -44,12 +44,13 @@ namespace personalsiteapi
             {
                 app.UseHsts();
             }
+            app.UseCors(builder =>
+                builder.WithOrigins("https://franciscofierro.us"));
+
             app.UseForwardedHeaders(new ForwardedHeadersOptions{
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
             });
 
-            app.UseCors(builder =>
-                builder.WithOrigins("https://franciscofierro.us"));
             app.UseHttpsRedirection();
             app.UseMvc();
         }

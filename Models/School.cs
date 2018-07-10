@@ -1,10 +1,10 @@
 namespace personalsiteapi.Models{
     public class School{
         public long Id {get; set;}
+         public string Name {get; set;}
         public string ImgUrl {get; set;}
-        public string Name {get; set;}
+        public double gpa{get; set;}
         public string StartYear {get; set;}
-
         public string EndYear {get; set;}
 
         public string[] Honors {get; set;}

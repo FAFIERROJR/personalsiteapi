@@ -9,6 +9,9 @@ namespace personalsiteapi.Models{
 
         protected override void OnModelCreating(ModelBuilder modelBuilder){
             modelBuilder.Entity<School>()
+                .HasKey(s => s.Key)
+                .HasName("PrimaryKey_Key");
+            modelBuilder.Entity<School>()
                 .HasAlternateKey(s => s.Name)
                 .HasName("AlternateKey_Name");
         }

@@ -7,14 +7,14 @@ namespace personalsiteapi.Models{
             :base(options){
             }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder){
-            modelBuilder.Entity<School>()
-                .HasKey(s => s.Key)
-                .HasName("PrimaryKey_Key");
-            modelBuilder.Entity<School>()
-                .HasAlternateKey(s => s.Name)
-                .HasName("AlternateKey_Name");
-        }
+        // protected override void OnModelCreating(ModelBuilder modelBuilder){
+        //     modelBuilder.Entity<School>()
+        //         .HasKey(s => s.Key)
+        //         .HasName("PrimaryKey_Key");
+        //     modelBuilder.Entity<School>()
+        //         .HasAlternateKey(s => s.Name)
+        //         .HasName("AlternateKey_Name");
+        // }
 
             public DbSet<School> Schools {get; set;}
     }

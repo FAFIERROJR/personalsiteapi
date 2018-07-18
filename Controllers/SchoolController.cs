@@ -30,6 +30,30 @@ namespace personalsiteapi.Controllers
             return school;
         }
 
+        [HttpGet("{key, property}", Name="GetSchoolProperty")]
+        public ActionResult<Object> getSchoolProperty(string key, string property){
+            var school = _context.Schools.Find(key);
+            if(school == null){
+                return NotFound();
+            }
+            switch(property){
+                case "EndYear":
+                    return school.EndYear;
+                case "Gpa":
+                    return school.Gpa;
+                case "Honors":
+                    return school.Honors;
+                case "ImgUrl":
+                    return school.ImgUrl;
+                case "Name":
+                    return school.Name;
+                case "StartYear":
+                    return school.StartYear;
+                default:
+                    return NotFound();
+            }
+        }
+
         [HttpPost]
         public IActionResult addSchool(School school){
             _context.Schools.Add(school);

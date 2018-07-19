@@ -21,6 +21,8 @@ namespace personalsiteapi.Controllers
         public ActionResult<List<School>> getAll(){
             return _context.Schools.ToList();
         }
+
+
         [HttpGet("{key}", Name="GetSchool")]
         public ActionResult<School> getByKey(string key){
             var school = _context.Schools.Find(key);
@@ -30,7 +32,7 @@ namespace personalsiteapi.Controllers
             return school;
         }
 
-        [HttpGet("{key, property}", Name="GetSchoolProperty")]
+        [HttpGet("{key}/{property}", Name="GetSchoolProperty")]
         public ActionResult<Object> getSchoolProperty(string key, string property){
             var school = _context.Schools.Find(key);
             if(school == null){

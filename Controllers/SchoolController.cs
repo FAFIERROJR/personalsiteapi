@@ -61,7 +61,7 @@ namespace personalsiteapi.Controllers
             _context.Schools.Add(school);
             _context.SaveChanges();
 
-            return CreatedAtRoute("GetSchool", new {key = school.Key}, school);
+            return CreatedAtRoute("GetSchool", new {key = school.SchoolKey}, school);
         }
 
         [HttpDelete("{key}", Name="DeleteSchool")]

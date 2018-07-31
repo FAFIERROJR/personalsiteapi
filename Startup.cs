@@ -12,6 +12,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using personalsiteapi.Models;
 
 namespace personalsiteapi
@@ -31,6 +33,10 @@ namespace personalsiteapi
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddEntityFrameworkNpgsql()
                 .AddDbContext<PersonalSiteDbContext>(options => options.UseNpgsql(Configuration.GetConnectionString("PersonalSiteDb")));
+            services.AddMvc().AddJsonOptions(options => {
+                options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,14 +50,17 @@ namespace personalsiteapi
             {
                 app.UseHsts();
             }
+            // app.UseCors(builder =>
+            //     builder.WithOrigins("https://franciscofierro.us"));
+            
             app.UseCors(builder =>
-                builder.WithOrigins("https://franciscofierro.us"));
+                builder.WithOrigins("http://localhost:8100"));
 
             app.UseForwardedHeaders(new ForwardedHeadersOptions{
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
             });
 
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
             app.UseMvc();
         }
     }

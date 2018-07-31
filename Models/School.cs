@@ -1,9 +1,10 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace personalsiteapi.Models{
     public class School{
         [Key]
-        public string Key {get; set;}
+        public string SchoolKey {get; set;}
         [Required]
          public string Name {get; set;}
         [Required]
@@ -17,8 +18,7 @@ namespace personalsiteapi.Models{
         [Required]
         public string[] Honors {get; set;}
 
-        // public virtual ICollection<Courses> NotableCourses;
+        public List<Course> Courses;
 
-        // public virtual ICollection<Projects> NotableProjects;
     }
 }

@@ -18,7 +18,7 @@ namespace personalsiteapi.Models{
         [Required]
         public string[] Honors {get; set;}
 
-        public List<Course> Courses;
+        public ICollection<Course> Courses {get; set;} = new List<Course>();
 
     }
 }

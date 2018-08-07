@@ -45,16 +45,16 @@ namespace personalsiteapi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseCors(builder =>
+                builder.WithOrigins("http://localhost:8100"));
             }
             else
             {
                 app.UseHsts();
+                app.UseCors(builder =>
+                builder.WithOrigins("https://franciscofierro.us"));
             }
-            // app.UseCors(builder =>
-            //     builder.WithOrigins("https://franciscofierro.us"));
             
-            app.UseCors(builder =>
-                builder.WithOrigins("http://localhost:8100"));
 
             app.UseForwardedHeaders(new ForwardedHeadersOptions{
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto

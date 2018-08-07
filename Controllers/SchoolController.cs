@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using personalsiteapi.Models;
 
 namespace personalsiteapi.Controllers
@@ -25,7 +26,7 @@ namespace personalsiteapi.Controllers
 
         [HttpGet("{key}", Name="GetSchool")]
         public ActionResult<School> getByKey(string key){
-            var school = _context.Schools.Find(key);
+            var school = _context.Schools.Include(s => s.Courses).Single(s => s.SchoolKey == key);
             if(school == null){
                 return NotFound();
             }

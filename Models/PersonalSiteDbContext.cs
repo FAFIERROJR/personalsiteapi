@@ -18,5 +18,6 @@ namespace personalsiteapi.Models{
 
             public DbSet<School> Schools {get; set;}
             public DbSet<Course> Courses {get; set;}
+            public DbSet<Project> Projects {get; set;}
     }
 }

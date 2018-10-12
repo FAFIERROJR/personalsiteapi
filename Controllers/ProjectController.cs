@@ -20,13 +20,13 @@ namespace personalsiteapi.Controllers
 
         [HttpGet]
         public ActionResult<List<Project>> getAll(){
-            return _context.Projects.Include(p =>p.Course).ToList();
+            return _context.Projects.Include((Project p) => p.Course).ToList();
         }
 
 
         [HttpGet("{key}", Name="GetProject")]
         public ActionResult<Project> getByKey(string key){
-            var school = _context.Projects.Include(p => p.Course).Single(s => s.ProjectKey == key);
+            var school = _context.Projects.Include((Project p) => p.Course).Single(s => s.ProjectKey == key);
             if(school == null){
                 return NotFound();
             }
@@ -35,7 +35,7 @@ namespace personalsiteapi.Controllers
 
         [HttpGet("/ByCourse/{key}", Name="GetProjectByCourse")]
         public ActionResult<Project> getByCourse(string courseKey){
-            var project = _context.Projects.Include(p => p.Course).Single(s => s.CourseName == courseKey);
+            var project = _context.Projects.Include((Project p) => p.Course).Single(s => s.CourseName == courseKey);
             if(project == null){
                 return NotFound();
             }

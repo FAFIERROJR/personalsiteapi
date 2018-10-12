@@ -52,7 +52,7 @@ namespace personalsiteapi.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(long id, Project project){
+        public IActionResult Update(String id, Project project){
             var proj = _context.Projects.Find(id);
             proj.CourseName = project.CourseName;
             proj.Description = project.Description;

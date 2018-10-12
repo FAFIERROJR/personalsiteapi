@@ -51,6 +51,19 @@ namespace personalsiteapi.Controllers
             return CreatedAtRoute("GetSchool", new {key = project.ProjectKey}, project);
         }
 
+        [HttpPut("{id}")]
+        public IActionResult Update(long id, Project project){
+            var proj = _context.Projects.Find(id);
+            proj.CourseName = project.CourseName;
+            proj.Description = project.Description;
+            proj.ImgUrlList = project.ImgUrlList;
+            proj.ProjectName = project.ProjectName;
+
+            _context.Projects.Update(proj);
+            _context.SaveChanges();
+            return NoContent();
+        }
+
         [HttpDelete("{key}", Name="DeleteProject")]
         public ActionResult<Project> deleteByKey(string key){
             var project = _context.Projects.Find(key);

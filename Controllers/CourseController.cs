@@ -31,7 +31,7 @@ namespace personalsiteapi.Controllers{
         }
 
         // GET api/values/5
-        [HttpGet("{name}")]
+        [HttpGet("/BySchool/{name}")]
         public ActionResult<Course> GetBySchool(string schoolKey){
             Course course = _context.Courses.Include(c => c.SchoolKey).Single(c => c.SchoolKey == schoolKey);
             if(course == null){

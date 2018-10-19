@@ -36,9 +36,6 @@ namespace personalsiteapi.Controllers
         [HttpGet("/ByCourse/{courseKey}", Name="GetProjectByCourse")]
         public ActionResult<List<Project>> getByCourse(string courseKey){
             var project = _context.Projects.Where(s => s.CourseName == courseKey);
-            if(project == null){
-                return NotFound();
-            }
             return project.ToList();
         }
 

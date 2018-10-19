@@ -33,7 +33,7 @@ namespace personalsiteapi.Controllers
             return school;
         }
 
-        [HttpGet("/ByCourse/{key}", Name="GetProjectByCourse")]
+        [HttpGet("/ByCourse/{courseKey}", Name="GetProjectByCourse")]
         public ActionResult<Project> getByCourse(string courseKey){
             var project = _context.Projects.Single(s => s.CourseName == courseKey);
             if(project == null){

@@ -8,8 +8,7 @@ namespace personalsiteapi.Models{
         [Required]
         public string ProjectName {get; set;}
         public string Description {get; set;}
-        [Required]
-        public ICollection<string> ImgUrlList = new List<string>();
+        public string[] ImgUrlList {get; set;}
 
         public string CourseName {get; set;}
         public Course Course;

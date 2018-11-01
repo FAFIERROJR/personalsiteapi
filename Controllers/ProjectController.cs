@@ -26,7 +26,7 @@ namespace personalsiteapi.Controllers
 
         [HttpGet("{key}", Name="GetProject")]
         public ActionResult<Project> getByKey(string key){
-            var school = _context.Projects.Single(s => s.ProjectKey == key);
+            var school = _context.Projects.Include(p => p.ImgUrlList).Single(s => s.ProjectKey == key);
             if(school == null){
                 return NotFound();
             }
